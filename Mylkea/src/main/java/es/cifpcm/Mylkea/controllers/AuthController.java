@@ -63,6 +63,6 @@ public class AuthController {
     @GetMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable Integer id) {
         usersService.deleteUser(id);
-        return "redirect:/auth/users";
+        return "redirect:/users";
     }
 }

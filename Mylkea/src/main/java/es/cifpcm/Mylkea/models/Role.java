@@ -17,6 +17,11 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     private List<Usuario> users;
 
+    public Role() {
+    }
+    public Role(String name) {
+        this.name = name;
+    }
     // Getters & Setters
     public Integer getId() {
         return id;
