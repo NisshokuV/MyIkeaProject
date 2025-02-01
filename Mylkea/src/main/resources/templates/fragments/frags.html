@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<nav th:fragment="header" class="navbar navbar-expand-lg navbar-primary bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="/">Mylkea</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/products">Lista</a>
+                </li>
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                    <a class="nav-link text-white" href="/carrito">Carrito</a>
+                </li>
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                    <a class="nav-link text-white" href="/pedidos">Pedidos</a>
+                </li>
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                    <a class="nav-link text-white" href="/users">Usuarios</a>
+                </li>
+                    <li class="nav-item ms-auto d-flex" sec:authorize="isAnonymous()" >
+                        <a class="btn btn-secondary" th:href="@{/register}">Registrarse</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a class="btn btn-outline-light" th:href="@{/login}">Entrar</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item ms-auto d-flex">
+                        <span class="nav-link text-white"><span sec:authentication="name"></span>!</span>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="btn btn-outline-light" th:href="@{/logout}">Salir</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</html>
