@@ -11,7 +11,7 @@
         <header th:replace="fragments/frags.html :: header"></header>
         <main>
             <h1>Productos</h1>
-            <a href="/products/create">Crear Product</a>
+            <a href="/products/create" sec:authorize="hasAnyRole('ADMIN','MANAGER')">Crear Product</a>
             <table class="table">
                 <thead class="table-header">
                 <tr>
